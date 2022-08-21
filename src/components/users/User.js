@@ -4,10 +4,6 @@ import * as Yup from 'yup';
 import "./User.css"
 
 
-
-
-
-
 const MyTextInput = ({ label, ...props }) => {
   // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
   // which we can spread on <input>. We can use field meta to show an error
@@ -41,14 +37,14 @@ const MySelect = ({ label, ...props }) => {
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
 
+const resetHandle=(e)=>{
+  e.preventDefault()
 
 
-// And now we can use these
+}
+
+
 const User = (props) => {
-
-
-
-
 
 
   return (
@@ -83,10 +79,11 @@ const User = (props) => {
         validationSchema={Yup.object({
           name: Yup.string()
             .max(15, 'Must be 15 characters or less')
-            .required("Note Empty")
+            .required("Name Field not be Empty")
             ,
           age: Yup.number()
             .min(18, 'Must be 18  or above')
+            .required("Age Field not be Empty")
             ,
           email: Yup.string()
             .email('Invalid email address')
@@ -131,7 +128,7 @@ const User = (props) => {
             .oneOf(
               ['male', 'female'],
               'Invalid sex '
-            )
+            ).required("Sex Field not be Empty")
             ,
 
             idType: Yup.string()
@@ -180,11 +177,8 @@ const User = (props) => {
         })}
         onSubmit={(values, { setSubmitting, resetForm,}) => {
           
-            
-  
           
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
             let dataToSubmit =  {
       
               address: values.address,
@@ -212,8 +206,6 @@ const User = (props) => {
            
             resetForm();
 
-        
-          
             setSubmitting(true)
           }, 400);
          
@@ -227,8 +219,10 @@ const User = (props) => {
           
           
           <MyTextInput
-            className="input_large"
-            label="Name"
+            className="input_large required"
+            required
+            
+            label="Name*"
             name="name"
             type="text"
             placeholder="Enter Name"
@@ -247,13 +241,13 @@ const User = (props) => {
 
           <MyTextInput
           className="input_medium"
-            label="Date of Birth or Age"
+            label="Date of Birth or Age*"
             name="age"
             type="number"
             placeholder="DD/MM/YYYY or Age in years"
           />
 
-          <MySelect className="field" label="Sex" name="sex">
+          <MySelect className="field" label="Sex*" name="sex">
             <option value="">Select Sex</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
@@ -349,7 +343,7 @@ const User = (props) => {
           <MySelect className="field_medium" label="State" name="state">
             <option value="">Enter State</option>
             <option value="uttarakhand">Uttarakand</option>
-            <option value="uttarpardesh">Uttar Pradesh</option>
+            <option value="uttarpradesh">Uttar Pradesh</option>
             </MySelect>
 
 
@@ -404,16 +398,16 @@ const User = (props) => {
             label="Nationality"
             name="nationality"
             type="text"
-            value="India"
+            value="India;"
             readonly
           />
 
           <div>
 
-          <button >Cancel</button>
+          <button type="reset" id="cancel">Cancel</button>
           
 
-          <button type="submit">Submit</button>
+          <button id="success" type="submit">Submit</button>
           </div>
         </Form>
         </div>

@@ -32,28 +32,28 @@ const columns = [
   {
     field: 'mobile',
     headerName: 'Mobile',
-    type: 'number',
+    type: 'mobile',
     width: 110,
     editable: true,
   },
   {
     field: 'emergencyNo',
     headerName: 'EmergencyNo',
-    type: 'number',
+    type: 'mobile',
     width: 110,
     editable: true,
   },
   {
     field: 'pincode',
     headerName: 'Pincode',
-    type: 'number',
+    type: 'mobile',
     width: 110,
     editable: true,
   },
   {
     field: 'govID',
     headerName: 'Govt ID',
-    type: 'number',
+    type: 'mobile',
     width: 110,
     editable: true,
   },
@@ -144,7 +144,6 @@ export default function UserData(props) {
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
-        disableSelectionOnClick
         experimentalFeatures={{ newEditingApi: true }}
       />
     </Box>
