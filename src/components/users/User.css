@@ -1,0 +1,42 @@
+
+.container{
+    width: 90%;
+    margin: auto;
+}
+
+.details{
+    display: grid;
+    grid-template-columns: 45% 50%;
+}
+
+label{
+    padding: 20px 10px; 
+}
+input{
+    margin: 10px 10px;
+}
+
+.input_large{
+    width: 380px;
+}
+.input_medium{
+    width: 220px;
+}
+
+.field_medium{
+    width: 200px;
+}
+
+select{
+    margin-right: 10px;
+}
+
+button{
+    padding: 25px;
+    height: 60px;
+    width: 100px;
+    margin: 0 20px;
+    position: relative;
+    left: 850px;
+}
+
